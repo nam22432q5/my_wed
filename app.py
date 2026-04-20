@@ -5,7 +5,7 @@ app = Flask(__name__, static_folder='.')
 
 @app.route('/')
 def index():
-    return send_from_directory('.', 'home.html')
+    return send_from_directory('.', 'index.html')
 
 @app.route('/assets/<path:filename>')
 def assets(filename):
