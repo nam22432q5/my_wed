@@ -266,8 +266,17 @@
     color: #fff; font-size: clamp(18px, 5vw, 22px);
     font-weight: 800; letter-spacing: 1px; text-align: center; margin-bottom: 12px;
   }
-  .home-codes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .home-codes img { border-radius: 10px; width: 100%; max-height: 55px; object-fit: cover; object-position: left center; }
+  .home-codes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .home-codes img {
+    width: 100%;
+    height: 50px;          /* 🔥 ép cùng chiều cao */
+    object-fit: fill;      /* 🔥 kéo giãn cho full khung */
+    border-radius: 10px;
+  }
   .home-banner { margin: 10px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
   .home-banner img { width: 100%; display: block; }
   .home-section { background: #fff; padding: clamp(12px, 3.5vw, 16px); }
