@@ -11,9 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="icon" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
-
-<!-- MANIFEST -->
-<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="152x152" href="logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+<link rel="apple-touch-icon" sizes="167x167" href="logo.png">
+<meta name="apple-mobile-web-app-title" content="VNeID">
+<meta name="application-name" content="VNeID">
 <style>
   :root {
     --red: #C8151B;
@@ -34,17 +36,9 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-  html, body {
-    width: 100%;
-    height: 100%;
-  }
+  html, body { width: 100%; height: 100%; }
 
-  body {
-    min-height: 100vh;
-    background: #111;
-
-    display: block;
-  }
+  body { min-height: 100vh; background: #111; display: block; }
 
   #app-shell {
     min-height: 100vh;
@@ -61,130 +55,52 @@
     body { background: #1a1a2e; }
   }
 
-  /* ====== PAGES ====== */
-  .page {
-    display: none;
-    flex-direction: column;
-
-    flex: 1;        /* 🔥 quan trọng */
-    min-height: 100%; /* 🔥 thêm dòng này */
-
-    overflow: hidden;
-  }
+  .page { display: none; flex-direction: column; flex: 1; min-height: 100%; overflow: hidden; }
   .page.active { display: flex; }
 
-  /* ====== STATUS BAR SPACER ====== */
-  .status-bar {
-    height: max(var(--safe-top), 44px);
-    flex-shrink: 0;
-    background: inherit;
-  }
+  .status-bar { height: max(var(--safe-top), 44px); flex-shrink: 0; background: inherit; }
   .status-bar.red { background: var(--red); }
   .status-bar.dark { background: var(--red-dark); }
-  .status-bar.transparent { background: transparent; }
 
   /* ====== SPLASH ====== */
   #splash { background: var(--red); flex-direction: column; }
-  .splash-hero {
-    flex: 0 0 54%;
-    position: relative;
-    overflow: hidden;
-  }
-  .splash-hero img.bg {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 35%;
-    filter: brightness(.55);
-  }
-  .splash-logo {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -60%);
-    width: clamp(160px, 50%, 220px);
-  }
+  .splash-hero { flex: 0 0 54%; position: relative; overflow: hidden; }
+  .splash-hero img.bg { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: brightness(.55); }
+  .splash-logo { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: clamp(160px, 50%, 220px); }
   .splash-body {
-    flex: 1;
-    background: var(--red-dark);
+    flex: 1; background: var(--red-dark);
     padding: clamp(14px, 4vw, 20px) clamp(16px, 5vw, 24px);
     padding-bottom: max(clamp(14px, 4vw, 20px), calc(var(--safe-bottom) + 12px));
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    gap: 10px;
+    display: flex; flex-direction: column; justify-content: space-evenly; gap: 10px;
   }
-  .splash-body p {
-    color: #fff;
-    font-size: clamp(12px, 3.2vw, 14px);
-    line-height: 1.65;
-    text-align: center;
-  }
-  .btn-red {
-    width: 100%; background: var(--red-mid); color: #fff;
-    border: none; padding: clamp(12px, 3.5vw, 15px);
-    border-radius: 30px; font-size: clamp(15px, 4vw, 17px);
-    font-weight: 700; cursor: pointer; font-family: inherit;
-    flex-shrink: 0;
-  }
-  .btn-outline-white {
-    width: 100%; background: transparent; color: #fff;
-    border: 1.5px solid rgba(255,255,255,.5);
-    padding: clamp(12px, 3.5vw, 15px);
-    border-radius: 30px; font-size: clamp(13px, 3.5vw, 14.5px);
-    font-weight: 700; cursor: pointer; font-family: inherit;
-    flex-shrink: 0;
-  }
+  .splash-body p { color: #fff; font-size: clamp(12px, 3.2vw, 14px); line-height: 1.65; text-align: center; }
+  .btn-red { width: 100%; background: var(--red-mid); color: #fff; border: none; padding: clamp(12px, 3.5vw, 15px); border-radius: 30px; font-size: clamp(15px, 4vw, 17px); font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; }
+  .btn-outline-white { width: 100%; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.5); padding: clamp(12px, 3.5vw, 15px); border-radius: 30px; font-size: clamp(13px, 3.5vw, 14.5px); font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; }
   .splash-footer-links a { color: #FFA726; font-weight: 700; font-size: clamp(12px, 3vw, 13px); text-decoration: none; }
   .splash-footer-links span { color: rgba(255,255,255,.7); font-size: clamp(12px, 3vw, 13px); }
-  .splash-footer-meta {
-    display: flex; justify-content: space-between;
-    font-size: clamp(10px, 2.5vw, 12px);
-    color: rgba(255,255,255,.45); margin-top: 4px;
-  }
+  .splash-footer-meta { display: flex; justify-content: space-between; font-size: clamp(10px, 2.5vw, 12px); color: rgba(255,255,255,.45); margin-top: 4px; }
 
   /* ====== LOGIN ====== */
   #login { background: #fff; }
-  .login-content {
-    display: flex; flex-direction: column; flex: 1; overflow: hidden;
-  }
-  .login-hero {
-    background-image: url('assets/nen1.jpg');
-    background-size: cover; background-position: center top;
-    flex-shrink: 0;
-    padding-bottom: 20px;
-  }
-  .login-topbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: max(48px, calc(var(--safe-top) + 12px)) 16px 12px;
-  }
+  .login-content { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+  .login-hero { background-image: url('assets/nen1.jpg'); background-size: cover; background-position: center top; flex-shrink: 0; padding-bottom: 20px; }
+  .login-topbar { display: flex; justify-content: space-between; align-items: center; padding: max(48px, calc(var(--safe-top) + 12px)) 16px 12px; }
   .login-topbar .back-btn { background: none; border: none; cursor: pointer; padding: 4px; }
   .login-topbar .account-pill { display: flex; align-items: center; gap: 6px; }
   .login-topbar .account-pill img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
-  .login-title {
-    font-size: clamp(18px, 5vw, 22px); font-weight: 800; color: var(--black87);
-    line-height: 1.4; padding: 0 20px;
-  }
+  .login-title { font-size: clamp(18px, 5vw, 22px); font-weight: 800; color: var(--black87); line-height: 1.4; padding: 0 20px; }
   .login-form-area { flex: 1; overflow-y: auto; padding: 20px 20px 16px; }
-  .user-card {
-    border: 1.5px solid var(--orange); border-radius: 12px;
-    padding: 14px 16px; display: flex; align-items: center;
-    justify-content: space-between; margin-bottom: 20px;
-  }
+  .user-card { border: 1.5px solid var(--orange); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
   .user-card-info .name { font-weight: 700; font-size: clamp(13px, 3.8vw, 15px); }
   .user-card-info .num { font-size: clamp(12px, 3.2vw, 13px); color: var(--black54); }
   .user-card img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; }
   .field-label { font-size: clamp(13px, 3.5vw, 14px); font-weight: 500; color: var(--black87); margin-bottom: 8px; }
   .input-wrap { position: relative; margin-bottom: 20px; }
   .input-wrap .prefix-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--black38); }
-  .input-wrap input {
-    width: 100%; padding: 14px 44px 14px 42px;
-    border: 1px solid var(--black12); border-radius: 12px;
-    font-size: clamp(14px, 3.8vw, 15px); font-family: inherit; outline: none; transition: border .2s;
-  }
+  .input-wrap input { width: 100%; padding: 14px 44px 14px 42px; border: 1px solid var(--black12); border-radius: 12px; font-size: clamp(14px, 3.8vw, 15px); font-family: inherit; outline: none; transition: border .2s; }
   .input-wrap input:focus { border-color: var(--red); border-width: 1.5px; }
   .input-wrap .suffix-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--black38); }
-  .btn-login {
-    width: 100%; background: var(--red); color: #fff; border: none;
-    padding: clamp(13px, 3.8vw, 16px); border-radius: 30px;
-    font-size: clamp(15px, 4.2vw, 17px); font-weight: 700; cursor: pointer; font-family: inherit;
-  }
+  .btn-login { width: 100%; background: var(--red); color: #fff; border: none; padding: clamp(13px, 3.8vw, 16px); border-radius: 30px; font-size: clamp(15px, 4.2vw, 17px); font-weight: 700; cursor: pointer; font-family: inherit; }
   .login-links { display: flex; justify-content: space-between; margin-top: 16px; }
   .login-links a { font-size: clamp(13px, 3.5vw, 14px); text-decoration: none; }
   .login-links a.red { color: var(--red); font-weight: 700; }
@@ -201,68 +117,79 @@
   #main { background: var(--bg); }
   .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 
-  /* ====== BOTTOM NAV ====== */
+  /* ====== BOTTOM NAV - FIXED ====== */
   .bottom-nav {
-    display: flex; background: #fff;
+    display: flex;
+    background: #fff;
     border-top: 1px solid var(--black12);
     flex-shrink: 0;
-    padding-bottom: max(0px, var(--safe-bottom));
-    z-index: 100;
+    padding-bottom: max(8px, var(--safe-bottom));
+    padding-top: 6px;
+    z-index: 999;
+    overflow: visible;
+    position: relative;
   }
   .nav-item {
-    flex: 1; display: flex; flex-direction: column; align-items: center;
-    padding: 8px 4px 10px; cursor: pointer; border: none; background: none;
-    font-family: inherit; color: var(--black54);
-    font-size: clamp(9px, 2.5vw, 11px); gap: 2px; transition: color .15s;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0 8px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    color: var(--black54);
+    font-size: 11px;
+    gap: 2px;
+    transition: color .15s;
+    min-width: 0;
   }
   .nav-item.active { color: var(--red); }
-  .nav-item svg { width: clamp(20px, 5.5vw, 24px); height: clamp(20px, 5.5vw, 24px); }
+  .nav-item.active svg { stroke: var(--red); }
+  .nav-item svg { width: clamp(20px, 5.5vw, 24px); height: clamp(20px, 5.5vw, 24px); flex-shrink: 0; }
+  .nav-item span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+
+  /* QR center button — cùng hàng với các tab khác */
+  .nav-item-qr {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    position: relative;
+  }
+  .nav-qr-circle {
+    width: 58px;
+    height: 58px;
+    background: var(--red);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(200,21,27,.5);
+  }
+  .nav-qr-circle svg { width: 28px; height: 28px; }
 
   /* ====== TAB CONTENTS ====== */
   .tab-content { flex: 1; overflow-y: auto; display: none; flex-direction: column; -webkit-overflow-scrolling: touch; }
   .tab-content.active { display: flex; }
 
   /* ====== HOME ====== */
-  .home-hero {
-    background-image: url('assets/nen.jpg');
-    background-size: cover; background-position: center;
-    padding: clamp(10px, 2.5vw, 12px) clamp(14px, 4vw, 16px) clamp(16px, 4vw, 20px);
-    flex-shrink: 0;
-  }
+  .home-hero { background-image: url('assets/nen.jpg'); background-size: cover; background-position: center; padding: clamp(10px, 2.5vw, 12px) clamp(14px, 4vw, 16px) clamp(16px, 4vw, 20px); flex-shrink: 0; }
   .home-hero-toprow { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-  .home-hero-toprow .avt {
-    width: clamp(40px, 11vw, 48px); height: clamp(40px, 11vw, 48px);
-    border-radius: 50%; object-fit: cover; margin-top: 28px;
-  }
-  .home-hero-toprow .badge-pill {
-    background: #fff; border-radius: 20px; padding: 4px 12px;
-    display: flex; align-items: center; gap: 6px;
-    font-size: clamp(11px, 3vw, 12px); font-weight: 600;
-  }
-  .badge-star {
-    width: 18px; height: 18px; background: var(--red);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  }
-  .home-hero-toprow .search-btn {
-    background: #fff; border: none; border-radius: 50%;
-    width: 40px; height: 40px; display: flex; align-items: center;
-    justify-content: center; cursor: pointer; margin-left: auto;
-  }
-  .home-name {
-    color: #fff; font-size: clamp(18px, 5vw, 22px);
-    font-weight: 800; letter-spacing: 1px; text-align: center; margin-bottom: 12px;
-  }
-  .home-codes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .home-codes img {
-    width: 100%;
-    height: 50px;          /* 🔥 ép cùng chiều cao */
-    object-fit: fill;      /* 🔥 kéo giãn cho full khung */
-    border-radius: 10px;
-  }
+  .home-hero-toprow .avt { width: clamp(40px, 11vw, 48px); height: clamp(40px, 11vw, 48px); border-radius: 50%; object-fit: cover; margin-top: 28px; }
+  .home-hero-toprow .badge-pill { background: #fff; border-radius: 20px; padding: 4px 12px; display: flex; align-items: center; gap: 6px; font-size: clamp(11px, 3vw, 12px); font-weight: 600; }
+  .badge-star { width: 18px; height: 18px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .home-hero-toprow .search-btn { background: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left: auto; }
+  .home-name { color: #fff; font-size: clamp(18px, 5vw, 22px); font-weight: 800; letter-spacing: 1px; text-align: center; margin-bottom: 12px; }
+  .home-codes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .home-codes img { width: 100%; height: 50px; object-fit: fill; border-radius: 10px; }
   .home-banner { margin: 10px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
   .home-banner img { width: 100%; display: block; }
   .home-section { background: #fff; padding: clamp(12px, 3.5vw, 16px); }
@@ -282,14 +209,7 @@
   .card-number { position: absolute; left: 29.7%; top: 48.4%; font-size: clamp(11px, 3.2vw, 14px); color: var(--black87); font-weight: 500; }
   .card-dots { position: absolute; left: 29.7%; top: 64.7%; font-size: clamp(11px, 3.2vw, 14px); font-weight: 700; color: var(--black87); }
   .card-date { position: absolute; left: 29.7%; top: 83%; font-size: clamp(10px, 2.8vw, 12px); color: var(--black87); }
-  .card-date2 { position: absolute; left: 3%; top: 91.8%; font-size: clamp(8px, 2.3vw, 10px); color: var(--black87); }
-  .wallet-detail-btn {
-    display: flex; align-items: center; gap: 8px; background: #fff; border: none;
-    border-radius: 20px; padding: 10px 20px;
-    box-shadow: 0 2px 8px var(--black12); cursor: pointer;
-    font-size: clamp(12px, 3.2vw, 13px); font-family: inherit; margin: 0 auto 12px;
-    flex-shrink: 0;
-  }
+  .wallet-detail-btn { display: flex; align-items: center; gap: 8px; background: #fff; border: none; border-radius: 20px; padding: 10px 20px; box-shadow: 0 2px 8px var(--black12); cursor: pointer; font-size: clamp(12px, 3.2vw, 13px); font-family: inherit; margin: 0 auto 12px; flex-shrink: 0; }
   .wallet-banner { margin: 0 12px 8px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
   .wallet-banner img { width: 100%; display: block; }
   .wallet-giay-title { font-weight: 700; font-size: clamp(13px, 3.8vw, 15px); padding: 14px 16px 0; flex-shrink: 0; }
@@ -297,38 +217,38 @@
   .wallet-tienich img { width: 100%; display: block; }
 
   /* ====== PASSCODE MODAL ====== */
-  .modal-overlay {
-    display: none; position: absolute; inset: 0;
-    background: rgba(0,0,0,.4); z-index: 200;
-    align-items: flex-end; justify-content: center;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 1000; align-items: flex-end; justify-content: center; }
   .modal-overlay.open { display: flex; }
   .passcode-sheet {
-    background: #fff; border-radius: 20px 20px 0 0;
-    padding: 0 16px; padding-bottom: max(24px, calc(var(--safe-bottom) + 16px));
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 0 16px;
+    padding-bottom: max(12px, var(--safe-bottom));
     width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
   }
-  .sheet-handle { width: 40px; height: 4px; background: #ddd; border-radius: 2px; margin: 12px auto; }
-  .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-  .sheet-header h3 { font-size: clamp(16px, 4.5vw, 18px); font-weight: 700; }
+  .sheet-handle { width: 40px; height: 4px; background: #ddd; border-radius: 2px; margin: 8px auto; }
+  .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .sheet-header h3 { font-size: clamp(15px, 4vw, 17px); font-weight: 700; }
   .sheet-close { background: none; border: none; cursor: pointer; padding: 4px; }
-  .dots-row { display: flex; gap: clamp(8px, 3vw, 12px); justify-content: center; margin-bottom: 12px; }
-  .dot { width: clamp(36px, 10vw, 44px); height: clamp(36px, 10vw, 44px); border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; }
+  .dots-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 6px; }
+  .dot { width: 32px; height: 32px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; }
   .dot.filled { background: #fff; border: 2px solid #ADD8E6; }
-  .dot-inner { width: clamp(22px, 6vw, 28px); height: clamp(22px, 6vw, 28px); border-radius: 50%; background: var(--orange); }
-  .forgot-pass { background: none; border: none; font-size: clamp(13px, 3.8vw, 15px); color: var(--black54); cursor: pointer; font-family: inherit; padding: 8px; display: block; margin: 0 auto 8px; }
-  .numpad { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(6px, 2vw, 8px); }
-  .numpad-key {
-    height: clamp(52px, 14vw, 60px); background: #fff; border: none;
-    border-radius: 10px; font-size: clamp(22px, 6vw, 26px);
-    font-weight: 500; cursor: pointer; box-shadow: 0 2px 6px var(--black12); font-family: inherit;
-  }
+  .dot-inner { width: 20px; height: 20px; border-radius: 50%; background: var(--orange); }
+  .forgot-pass { background: none; border: none; font-size: 13px; color: var(--black54); cursor: pointer; font-family: inherit; padding: 4px; display: block; margin: 0 auto 6px; }
+  .numpad { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .numpad-key { height: 48px; background: #fff; border: none; border-radius: 10px; font-size: 22px; font-weight: 500; cursor: pointer; box-shadow: 0 2px 6px var(--black12); font-family: inherit; }
   .numpad-key.delete { background: var(--black87); color: #fff; }
   .numpad-key.empty { background: none; box-shadow: none; cursor: default; }
 
-  /* ====== CCCD DETAIL ====== */
-  #cccd-detail { background: var(--bg); }
+  /* ====== CCCD DETAIL - FIXED EXACTLY LIKE SCREENSHOT ====== */
+  /* Background: watermark image, white appbar */
+  #cccd-detail {
+    background: #fff;
+  }
   .detail-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
   .detail-appbar {
     background: #fff;
     padding-top: max(48px, calc(var(--safe-top) + 12px));
@@ -338,29 +258,86 @@
   }
   .back-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; color: var(--black87); }
   .detail-appbar h2 { font-size: clamp(16px, 4.5vw, 18px); font-weight: 700; }
-  .info-card { background: #fff; border-radius: 12px; margin: 12px; padding: 16px; }
-  .info-row { margin-bottom: 12px; }
-  .info-row label { font-size: clamp(11px, 3vw, 13px); font-weight: 700; color: var(--red); display: block; margin-bottom: 2px; }
-  .info-row span { font-size: clamp(12px, 3.5vw, 14px); color: var(--black87); display: block; }
-  .info-row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-  .divider { height: 1px; background: var(--black12); margin: 12px 0; }
-  .list-tile { background: #fff; border-radius: 12px; margin: 0 12px 12px; cursor: pointer; }
-  .list-tile .tile-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
-  .tile-row span { font-size: clamp(12px, 3.5vw, 14px); font-weight: 500; }
+
+  /* CCCD card image wrapper */
+  .cccd-card-wrapper { margin: 12px; border-radius: 14px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,.15); }
+  .cccd-card-inner { position: relative; width: 100%; padding-bottom: 62.5%; }
+  .cccd-card-inner img.cccd-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
+
+  /* The info area has a watermark bg - user adds later */
+  .cccd-info-body {
+    position: relative;
+    background: #fff url('assets/cccd_bg_watermark.jpg') center/cover no-repeat;
+    padding: 14px 16px 0;
+  }
+
+  /* Each row: "Label in đậm đỏ: value" on SAME LINE — exactly like screenshot */
+  .info-row {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: clamp(13px, 3.8vw, 15px);
+    color: var(--black87);
+  }
+
+  /* bold red label inline */
+  .info-row .lbl {
+    font-weight: 700;
+    color: var(--red);
+    font-size: clamp(13px, 3.8vw, 15px);
+  }
+  /* value continues on same line, normal weight */
+  .info-row .val {
+    font-weight: 400;
+    color: var(--black87);
+  }
+  /* for rows where value wraps to next line naturally (long text) — still inline, just wraps */
+  .info-row .val.block {
+    display: block;
+    margin-top: 0;
+  }
+
+  /* Dân tộc / Tôn giáo two columns inline */
+  .info-row-inline2 {
+    display: flex;
+    gap: 0;
+    margin-bottom: 10px;
+    font-size: clamp(13px, 3.8vw, 15px);
+  }
+  .info-row-inline2 .col1 { flex: 1; }
+  .info-row-inline2 .col2 { flex: 1; }
+  .info-row-inline2 .lbl { font-weight: 700; color: var(--red); }
+  .info-row-inline2 .val { font-weight: 400; color: var(--black87); }
+
+  /* Last updated bar */
+  .cccd-updated-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 16px 10px;
+    font-size: clamp(10px, 2.8vw, 12px);
+    color: var(--black38);
+  }
+
+  /* Link tiles at bottom */
+  .list-tile {
+    border-top: 1px solid var(--black12);
+    cursor: pointer;
+    background: transparent;
+  }
+  .list-tile .tile-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px;
+  }
+  .tile-row span { font-size: clamp(13px, 3.8vw, 14.5px); font-weight: 600; color: var(--black87); flex: 1; line-height: 1.4; }
+
+  .list-tile2 { background: #fff; }
+  .list-tile2 .tile-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--black12); }
+  .list-tile2 .tile-row span { font-size: clamp(13px, 3.8vw, 14.5px); font-weight: 600; flex: 1; }
   .tile-dot { width: 28px; height: 28px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .list-tile2 { background: #fff; border-radius: 12px; margin: 0 12px; }
-  .list-tile2 .tile-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
-  .list-tile2 .tile-row span { font-size: clamp(12px, 3.5vw, 14px); font-weight: 500; flex: 1; }
   .tile-divider { height: 1px; background: var(--black12); margin: 0 16px; }
 
   /* ====== GPLX ====== */
   #gplx { background: #fff; }
   .gplx-scroll { flex: 1; overflow-y: auto; padding: clamp(12px, 3.5vw, 16px); -webkit-overflow-scrolling: touch; }
-  .gplx-card {
-    background: linear-gradient(135deg, #FFF3C4, #FFE082);
-    border-radius: 16px; padding: clamp(16px, 4.5vw, 20px);
-    box-shadow: 0 4px 16px rgba(255,193,7,.3);
-  }
+  .gplx-card { background: linear-gradient(135deg, #FFF3C4, #FFE082); border-radius: 16px; padding: clamp(16px, 4.5vw, 20px); box-shadow: 0 4px 16px rgba(255,193,7,.3); }
   .gplx-status-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
   .gplx-active-pill { background: #fff; border-radius: 20px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; font-size: clamp(11px, 3vw, 13px); font-weight: 600; }
   .gplx-update { font-size: clamp(10px, 2.5vw, 11px); color: #8d6e36; font-style: italic; margin-bottom: 12px; }
@@ -370,21 +347,11 @@
   .gplx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
   .gplx-grid-item label { font-size: clamp(11px, 3vw, 13px); color: var(--black54); display: block; margin-bottom: 2px; }
   .gplx-grid-item span { font-size: clamp(13px, 3.8vw, 16px); font-weight: 700; color: var(--black87); }
-  .gplx-detail-btn {
-    background: #fff; border: none; border-radius: 24px; padding: 10px 24px;
-    font-size: clamp(12px, 3.5vw, 14px); font-weight: 500; cursor: pointer;
-    display: flex; align-items: center; gap: 8px;
-    box-shadow: 0 2px 8px var(--black12); margin: 20px auto 0; font-family: inherit;
-  }
+  .gplx-detail-btn { background: #fff; border: none; border-radius: 24px; padding: 10px 24px; font-size: clamp(12px, 3.5vw, 14px); font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px var(--black12); margin: 20px auto 0; font-family: inherit; }
 
   /* ====== SETTINGS ====== */
   #settings { background: var(--bg); }
-  .settings-appbar {
-    background: var(--red);
-    padding-top: max(48px, calc(var(--safe-top) + 12px));
-    padding-left: 16px; padding-right: 16px; padding-bottom: 14px;
-    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
-  }
+  .settings-appbar { background: var(--red); padding-top: max(48px, calc(var(--safe-top) + 12px)); padding-left: 16px; padding-right: 16px; padding-bottom: 14px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .settings-appbar h2 { font-size: clamp(16px, 4.5vw, 18px); font-weight: 700; color: #fff; }
   .settings-appbar .back-icon-btn { color: #fff; }
   .settings-scroll { flex: 1; overflow-y: auto; padding: 16px; -webkit-overflow-scrolling: touch; }
@@ -399,34 +366,14 @@
   .field-group label { display: block; font-size: clamp(11px, 3vw, 13px); font-weight: 500; color: var(--black54); margin-bottom: 6px; }
   .field-group .field-input { position: relative; }
   .field-group .field-input svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--black38); }
-  .field-group input {
-    width: 100%; padding: 13px 12px 13px 42px;
-    border: 1px solid var(--black12); border-radius: 10px;
-    font-size: clamp(13px, 3.8vw, 15px); font-family: inherit; outline: none; transition: border .2s;
-  }
+  .field-group input { width: 100%; padding: 13px 12px 13px 42px; border: 1px solid var(--black12); border-radius: 10px; font-size: clamp(13px, 3.8vw, 15px); font-family: inherit; outline: none; transition: border .2s; }
   .field-group input:focus { border-color: var(--red); border-width: 1.5px; }
-  .btn-save {
-    width: 100%; background: var(--red); color: #fff; border: none;
-    padding: clamp(12px, 3.5vw, 14px); border-radius: 30px;
-    font-size: clamp(14px, 4vw, 16px); font-weight: 700; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: inherit; margin-bottom: 12px;
-  }
-  .btn-delete {
-    width: 100%; background: transparent; color: red; border: 1.5px solid red;
-    padding: clamp(12px, 3.5vw, 14px); border-radius: 30px;
-    font-size: clamp(14px, 4vw, 16px); font-weight: 700; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: inherit; margin-bottom: 12px;
-  }
+  .btn-save { width: 100%; background: var(--red); color: #fff; border: none; padding: clamp(12px, 3.5vw, 14px); border-radius: 30px; font-size: clamp(14px, 4vw, 16px); font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit; margin-bottom: 12px; }
+  .btn-delete { width: 100%; background: transparent; color: red; border: 1.5px solid red; padding: clamp(12px, 3.5vw, 14px); border-radius: 30px; font-size: clamp(14px, 4vw, 16px); font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit; margin-bottom: 12px; }
   .settings-notice { background: #fff8e1; border: 1px solid #FFE082; border-radius: 10px; padding: 12px; display: flex; gap: 8px; font-size: clamp(10px, 2.8vw, 12px); color: var(--black54); margin-top: 8px; }
 
   /* ====== DIALOG ====== */
-  .dialog-overlay {
-    display: none; position: absolute; inset: 0;
-    background: rgba(0,0,0,.4); z-index: 300;
-    align-items: center; justify-content: center;
-  }
+  .dialog-overlay { display: none; position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 300; align-items: center; justify-content: center; }
   .dialog-overlay.open { display: flex; }
   .dialog-box { background: #fff; border-radius: 12px; padding: 20px; width: calc(100% - 64px); max-width: 320px; }
   .dialog-box h3 { font-size: clamp(15px, 4.2vw, 17px); font-weight: 700; margin-bottom: 12px; }
@@ -437,23 +384,13 @@
   .dialog-btn.confirm { color: red; }
 
   /* ====== TOAST ====== */
-  .toast {
-    position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
-    background: #323232; color: #fff; border-radius: 8px;
-    padding: 10px 20px; font-size: clamp(12px, 3.5vw, 14px);
-    z-index: 400; opacity: 0; transition: opacity .3s;
-    pointer-events: none; white-space: nowrap;
-  }
+  .toast { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); background: #323232; color: #fff; border-radius: 8px; padding: 10px 20px; font-size: clamp(12px, 3.5vw, 14px); z-index: 400; opacity: 0; transition: opacity .3s; pointer-events: none; white-space: nowrap; }
   .toast.show { opacity: 1; }
   .toast.green { background: #388e3c; }
   .toast.red { background: #c62828; }
 
   /* ====== SCROLLBAR HIDE ====== */
-  .tab-content::-webkit-scrollbar,
-  .detail-scroll::-webkit-scrollbar,
-  .gplx-scroll::-webkit-scrollbar,
-  .settings-scroll::-webkit-scrollbar,
-  .login-form-area::-webkit-scrollbar { display: none; }
+  .tab-content::-webkit-scrollbar, .detail-scroll::-webkit-scrollbar, .gplx-scroll::-webkit-scrollbar, .settings-scroll::-webkit-scrollbar, .login-form-area::-webkit-scrollbar { display: none; }
   .tab-content, .detail-scroll, .gplx-scroll, .settings-scroll, .login-form-area { scrollbar-width: none; }
 </style>
 </head>
@@ -743,30 +680,60 @@
 
   </div>
 
-  <!-- BOTTOM NAV -->
+  <!-- ====== BOTTOM NAV - FIXED TO MATCH SCREENSHOT ====== -->
   <nav class="bottom-nav">
+    <!-- Trang chủ -->
     <button class="nav-item active" id="nav-home" onclick="switchTab('home')">
       <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Trang chủ</span>
     </button>
+
+    <!-- Ví giấy tờ -->
     <button class="nav-item" id="nav-wallet" onclick="switchTab('wallet')">
-      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 32 32">
+        <rect x="5" y="6" width="12" height="5" rx="2.5"/>
+        <rect x="5" y="10" width="20" height="16" rx="4"/>
+        <line x1="9" y1="15" x2="18" y2="15"/>
+        <rect x="23" y="16" width="5" height="4" rx="1.5"/>
+      </svg>
       <span>Ví giấy tờ</span>
     </button>
-    <button class="nav-item">
-      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+
+    <!-- Nút giữa - icon chuẩn từ code mẫu -->
+    <button class="nav-item-qr" onclick="">
+      <div class="nav-qr-circle">
+        <!-- Scan frame: 4 góc L + hình vuông trắng + thanh ngang -->
+        <div style="position:relative;width:34px;height:34px;">
+          <!-- 4 góc -->
+          <span style="position:absolute;top:0;left:0;width:10px;height:10px;border:2.5px solid #fff;border-right:none;border-bottom:none;border-top-left-radius:4px;"></span>
+          <span style="position:absolute;top:0;right:0;width:10px;height:10px;border:2.5px solid #fff;border-left:none;border-bottom:none;border-top-right-radius:4px;"></span>
+          <span style="position:absolute;bottom:0;left:0;width:10px;height:10px;border:2.5px solid #fff;border-right:none;border-top:none;border-bottom-left-radius:4px;"></span>
+          <span style="position:absolute;bottom:0;right:0;width:10px;height:10px;border:2.5px solid #fff;border-left:none;border-top:none;border-bottom-right-radius:4px;"></span>
+          <!-- Hình vuông bo góc giữa: nửa trên trắng, nửa dưới mờ dần -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="flex:1;background:#fff;"></div>
+            <div style="flex:1;background:linear-gradient(to bottom,rgba(255,255,255,0.85),rgba(255,255,255,0.1));"></div>
+          </div>
+          <!-- Thanh ngang trắng đè lên giữa, dài hơn hình vuông -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:2.5px;background:#fff;border-radius:2px;z-index:2;"></div>
+        </div>
+      </div>
     </button>
-    <button class="nav-item" id="nav-notif">
+
+    <!-- Thông báo -->
+    <button class="nav-item" id="nav-notif" onclick="switchTab('notif')">
       <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
       <span>Thông báo</span>
     </button>
+
+    <!-- Cài đặt -->
     <button class="nav-item" id="nav-settings" onclick="switchTab('settings')">
       <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       <span>Cài đặt</span>
     </button>
   </nav>
 
-  <!-- PASSCODE MODAL (inside main) -->
+  <!-- PASSCODE MODAL -->
   <div class="modal-overlay" id="passcode-modal">
     <div class="passcode-sheet">
       <div class="sheet-handle"></div>
@@ -789,7 +756,7 @@
     </div>
   </div>
 
-  <!-- DELETE DIALOG (inside main) -->
+  <!-- DELETE DIALOG -->
   <div class="dialog-overlay" id="delete-dialog">
     <div class="dialog-box">
       <h3>Xác nhận xóa</h3>
@@ -804,7 +771,7 @@
   <div class="toast" id="toast"></div>
 </div>
 
-<!-- ===================== CCCD DETAIL ===================== -->
+<!-- ===================== CCCD DETAIL - FIXED LAYOUT ===================== -->
 <div class="page" id="cccd-detail">
   <div class="detail-appbar">
     <button class="back-icon-btn" onclick="goto('main')">
@@ -812,67 +779,132 @@
     </button>
     <h2>Căn cước điện tử</h2>
   </div>
+
   <div class="detail-scroll">
-    <div style="margin:12px;border-radius:14px;overflow:hidden;">
-      <div style="position:relative;width:100%;padding-bottom:62.5%;">
-        <img style="position:absolute;inset:0;width:100%;height:100%;object-fit:fill;" src="assets/cccd1.jpg" alt=""/>
+    <!-- CCCD card image -->
+    <div class="cccd-card-wrapper">
+      <div class="cccd-card-inner">
+        <img class="cccd-bg" src="assets/cccd1.jpg" alt=""/>
         <img id="cccd-card-avt" style="position:absolute;top:36.7%;left:4.2%;width:21.2%;height:50.3%;border-radius:3px;object-fit:cover;" src="assets/avatar.jpg" alt=""/>
         <div id="cccd-number" style="position:absolute;left:29.7%;top:48.4%;font-size:clamp(10px,2.8vw,14px);color:rgba(0,0,0,.87);font-weight:500;"></div>
         <div id="cccd-name-card" style="position:absolute;left:29.7%;top:64.7%;font-size:clamp(9px,2.5vw,13px);color:rgba(0,0,0,.87);font-weight:700;"></div>
         <div id="cccd-dob-card" style="position:absolute;left:29.7%;top:81.5%;font-size:clamp(8px,2.3vw,12px);color:rgba(0,0,0,.87);"></div>
-        <div id="cccd-gender-card" style="position:absolute;left:46.5%;top:88.5%;font-size:clamp(10px,1.5vw,10px);color:rgba(0,0,0,.87);font-weight:500;"></div>
-
+        <div id="cccd-gender-card" style="position:absolute;left:46.5%;top:88.5%;font-size:clamp(8px,1.5vw,10px);color:rgba(0,0,0,.87);font-weight:500;"></div>
       </div>
     </div>
 
-    <div class="info-card">
-      <div class="info-row"><label>Ngày, tháng, năm sinh</label><span id="d-dob"></span></div>
-      <div class="info-row"><label>Giới tính</label><span id="d-gender"></span></div>
-      <div class="info-row-half">
-        <div class="info-row"><label>Dân tộc</label><span>Kinh</span></div>
-        <div class="info-row"><label>Tôn giáo</label><span>Không</span></div>
-      </div>
-      <div class="info-row"><label>Nơi sinh</label><span>---</span></div>
-      <div class="info-row"><label>Nơi đăng ký khai sinh</label><span id="d-hometown"></span></div>
-      <div class="info-row"><label>Quê quán</label><span id="d-hometown2"></span></div>
-      <div class="info-row"><label>Nơi thường trú</label><span id="d-address"></span></div>
-      <div class="info-row"><label>Nơi tạm trú</label><span>---</span></div>
-      <div class="info-row"><label>Nơi ở hiện tại</label><span id="d-address2"></span></div>
-      <div class="info-row"><label>Đặc điểm nhận dạng</label><span id="d-feature"></span></div>
-      <div class="info-row"><label>Ngày cấp Căn cước gần nhất</label><span>05/11/2024</span></div>
-      <div class="info-row"><label>Nhóm máu</label><span>---</span></div>
-      <div class="info-row"><label>Số chứng minh nhân dân 9 số</label><span>---</span></div>
-      <div class="info-row"><label>Nghề nghiệp</label><span>Khác</span></div>
-      <div class="divider"></div>
+    <!-- Info body with watermark bg (user adds bg image later) -->
+    <div class="cccd-info-body">
+
+      <!-- Nơi sinh -->
       <div class="info-row">
-        <label>Số thuê bao di động</label>
-        <span>· Đăng ký tài khoản định danh: <span id="d-phone"></span></span>
-        <span>· Khác: ---</span>
+        <span class="lbl">Nơi sinh: </span><span class="val">---</span>
       </div>
+
+      <!-- Nơi đăng ký khai sinh -->
       <div class="info-row">
-        <label>Địa chỉ thư điện tử</label>
-        <span>· ---</span>
+        <span class="lbl">Nơi đăng ký khai sinh: </span><span class="val" id="d-hometown">Xã Vô Tranh, Tỉnh Thái Nguyên</span>
       </div>
+
+      <!-- Quê quán -->
+      <div class="info-row">
+        <span class="lbl">Quê quán: </span><span class="val" id="d-hometown2">Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+      </div>
+
+      <!-- Dân tộc + Tôn giáo inline 2 col -->
+      <div class="info-row-inline2">
+        <div class="col1"><span class="lbl">Dân tộc: </span><span class="val">Kinh</span></div>
+        <div class="col2"><span class="lbl">Tôn giáo: </span><span class="val">Không</span></div>
+      </div>
+
+      <!-- Nơi thường trú -->
+      <div class="info-row">
+        <span class="lbl">Nơi thường trú:</span><br/>
+        <span class="val" id="d-address">Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+      </div>
+
+      <!-- Nơi tạm trú -->
+      <div class="info-row">
+        <span class="lbl">Nơi tạm trú:</span><br/>
+        <span class="val">---</span>
+      </div>
+
+      <!-- Nơi ở hiện tại -->
+      <div class="info-row">
+        <span class="lbl">Nơi ở hiện tại:</span><br/>
+        <span class="val" id="d-address2">Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+      </div>
+
+      <!-- Đặc điểm nhận dạng -->
+      <div class="info-row">
+        <span class="lbl">Đặc điểm nhận dạng: </span><span class="val" id="d-feature">Sẹo chấm C:2cm trên sau mép phải</span>
+      </div>
+
+      <!-- Ngày cấp Căn cước -->
+      <div class="info-row">
+        <span class="lbl">Ngày cấp Căn cước gần nhất: </span><span class="val">05/11/2024</span>
+      </div>
+
+      <!-- Nhóm máu -->
+      <div class="info-row">
+        <span class="lbl">Nhóm máu: </span><span class="val">---</span>
+      </div>
+
+      <!-- CMND 9 số -->
+      <div class="info-row">
+        <span class="lbl">Số chứng minh nhân dân 9 số: </span><span class="val">---</span>
+      </div>
+
+      <!-- Nghề nghiệp -->
+      <div class="info-row">
+        <span class="lbl">Nghề nghiệp: </span><span class="val">Khác</span>
+      </div>
+
+      <!-- Số thuê bao -->
+      <div class="info-row">
+        <span class="lbl">Số thuê bao di động:</span><br/>
+        <span class="val">. Đăng ký tài khoản định danh: <span id="d-phone">0396590363</span></span><br/>
+        <span class="val">. Khác: ---</span>
+      </div>
+
+      <!-- Địa chỉ thư điện tử -->
+      <div class="info-row">
+        <span class="lbl">Địa chỉ thư điện tử:</span><br/>
+        <span class="val">. ---</span>
+      </div>
+
+    </div><!-- end cccd-info-body -->
+
+    <!-- Last updated -->
+    <div class="cccd-updated-bar">
+      <span>Cập nhật lần cuối</span>
+      <span>04:23 12-11-2024</span>
     </div>
 
+    <!-- Link tile: family info -->
     <div class="list-tile">
       <div class="tile-row">
         <span>Thông tin gia đình, người đại diện hợp pháp, người được đại diện</span>
-        <svg width="20" height="20" fill="none" stroke="#555" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        <svg width="20" height="20" fill="none" stroke="#999" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
     </div>
 
+    <!-- Link tiles: card history -->
     <div class="list-tile2">
       <div class="tile-row">
-        <div class="tile-dot"><svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="tile-dot">
+          <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
         <span>Thẻ Căn cước</span>
       </div>
-      <div class="tile-divider"></div>
       <div class="tile-row">
-        <div class="tile-dot"><svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="tile-dot">
+          <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
         <span>Lịch sử cấp thẻ CC/CCCD/CMND</span>
       </div>
     </div>
+
     <div style="height:30px;"></div>
   </div>
 </div>
@@ -915,7 +947,6 @@
 </div><!-- end app-shell -->
 
 <script>
-// ===== STORAGE =====
 function savePrefs(data){try{localStorage.setItem('vneID_prefs',JSON.stringify(data));}catch(e){}}
 function loadPrefs(){try{return JSON.parse(localStorage.getItem('vneID_prefs'))||{};}catch{return{};}}
 function clearPrefs(){try{localStorage.removeItem('vneID_prefs');}catch(e){}}
@@ -940,7 +971,6 @@ function autoDate(input){
   });
 }
 
-// ===== NAV =====
 let currentPage='splash';
 let mainTab='home';
 
@@ -956,7 +986,7 @@ function goto(page){
 function switchTab(tab){
   document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
-  ['home','wallet','settings'].forEach(t=>{
+  ['home','wallet','settings','notif'].forEach(t=>{
     const el=document.getElementById('nav-'+t);
     if(el)el.classList.toggle('active',t===tab);
   });
@@ -965,7 +995,6 @@ function switchTab(tab){
   if(tab==='settings')loadSettings();
 }
 
-// ===== REFRESH =====
 function refreshMain(){
   const d=loadPrefs();
   setText('home-name',d.name||'NGUYỄN VŨ NAM');
@@ -987,18 +1016,16 @@ function refreshCccdDetail(){
   const d=loadPrefs();
   const a=document.getElementById('cccd-card-avt');
   if(a)a.src=d.avatar||'assets/avatar.jpg';
-  setText('cccd-number',d.number||'019214333654');
-  setText('cccd-name-card',d.name||'minh ha');
-  setText('cccd-dob-card',d.dob||'22/08/2005');
+  setText('cccd-number',d.number||'019205000598');
+  setText('cccd-name-card',d.name||'NGUYỄN VŨ NAM');
+  setText('cccd-dob-card',d.dob||'28/06/2005');
   setText('cccd-gender-card',d.gender||'Nam');
-  setText('d-dob',d.dob||'22/08/2005');
-  setText('d-gender',d.gender||'Nam');
-  setText('d-hometown',d.hometown||'Xã ha, Tỉnh ha');
-  setText('d-hometown2',d.hometown||'Xã ha, Tỉnh ha');
-  setText('d-address',d.address||'Xóm ha, Xã ha, Tỉnh ha');
-  setText('d-address2',d.address||'Xóm ha, Xã ha, Tỉnh ha');
-  setText('d-feature',d.feature||'Sẹo chấm C');
-  setText('d-phone',d.phone||'0211444777');
+  setText('d-hometown',d.hometown||'Xã Vô Tranh, Tỉnh Thái Nguyên');
+  setText('d-hometown2',d.hometown||'Xã Vô Tranh, Tỉnh Thái Nguyên');
+  setText('d-address',d.address||'Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên');
+  setText('d-address2',d.address||'Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên');
+  setText('d-feature',d.feature||'Sẹo chấm C:2cm trên sau mép phải');
+  setText('d-phone',d.phone||'0396590363');
 }
 function refreshGplx(){
   const d=loadPrefs();
@@ -1009,7 +1036,6 @@ function refreshGplx(){
 }
 function setText(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 
-// ===== LOGIN =====
 function doLogin(){
   const d=loadPrefs();
   document.getElementById('login-name').textContent=d.name||'NGUYỄN VŨ NAM';
@@ -1021,7 +1047,6 @@ function togglePw(){
   inp.type=inp.type==='password'?'text':'password';
 }
 
-// ===== PASSCODE =====
 let passcodeTarget='';
 let passcodeInput='';
 function openPasscode(target){
@@ -1079,7 +1104,6 @@ function buildNumpad(){
   }));
 }
 
-// ===== SETTINGS =====
 function loadSettings(){
   const d=loadPrefs();
   setValue('s-name',d.name||'');
@@ -1136,7 +1160,6 @@ function doDelete(){
   showToast('Đã xóa toàn bộ dữ liệu','red');
 }
 
-// ===== AVATAR =====
 function pickAvatar(){document.getElementById('avt-file').click();}
 function handleAvatarFile(e){
   const file=e.target.files[0];if(!file)return;
@@ -1149,7 +1172,6 @@ function handleAvatarFile(e){
   reader.readAsDataURL(file);
 }
 
-// ===== TOAST =====
 function showToast(msg,type=''){
   const t=document.getElementById('toast');
   t.textContent=msg;t.className='toast '+(type||'');
@@ -1157,7 +1179,6 @@ function showToast(msg,type=''){
   setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-// ===== INIT =====
 window.addEventListener('load',function(){
   buildNumpad();
   ['s-dob','s-gplx-issued','s-gplx-expiry'].forEach(id=>{
@@ -1167,31 +1188,23 @@ window.addEventListener('load',function(){
   if(d.name)document.getElementById('login-name').textContent=d.name;
   if(d.number)document.getElementById('login-num').textContent=maskNumber(d.number);
 
-  // Prevent pull-to-refresh and bounce on iOS
   document.body.addEventListener('touchmove',function(e){
-    if(e.target.closest('.tab-content,.detail-scroll,.gplx-scroll,.settings-scroll,.login-form-area')){
-      return; // allow scroll inside scrollable areas
-    }
+    if(e.target.closest('.tab-content,.detail-scroll,.gplx-scroll,.settings-scroll,.login-form-area')){return;}
     e.preventDefault();
   },{passive:false});
 
-  // Fix height on mobile browsers (especially iOS Safari with toolbar)
   function setAppHeight(){
-    const h = window.innerHeight;
-    document.getElementById('app-shell').style.height = h + 'px';
-    document.body.style.height = h + 'px';
+    const h=window.innerHeight;
+    document.getElementById('app-shell').style.height=h+'px';
+    document.body.style.height=h+'px';
   }
   setAppHeight();
-  window.addEventListener('resize', setAppHeight);
-  window.addEventListener('orientationchange', function(){ setTimeout(setAppHeight, 300); });
+  window.addEventListener('resize',setAppHeight);
+  window.addEventListener('orientationchange',function(){setTimeout(setAppHeight,300);});
 });
-function setVH() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
+function setVH(){let vh=window.innerHeight*0.01;document.documentElement.style.setProperty('--vh',`${vh}px`);}
 setVH();
-window.addEventListener('resize', setVH);
-
+window.addEventListener('resize',setVH);
 </script>
 </body>
 </html>

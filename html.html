@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Scan Pill Icon</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+    margin: 0;
+  }
+
+  .icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 28px;
+    background: radial-gradient(circle at 30% 25%, #ff6b6b 0%, #e63946 45%, #b8232f 100%);
+    box-shadow: 0 8px 20px rgba(200, 30, 40, 0.35);
+    position: relative;
+  }
+
+  .scan-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 76px;
+    height: 76px;
+  }
+
+  .scan-frame span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+  }
+  .scan-frame .tl { top: 0; left: 0;  border-right: none; border-bottom: none; border-top-left-radius: 8px; }
+  .scan-frame .tr { top: 0; right: 0; border-left: none;  border-bottom: none; border-top-right-radius: 8px; }
+  .scan-frame .bl { bottom: 0; left: 0;  border-right: none; border-top: none; border-bottom-left-radius: 8px; }
+  .scan-frame .br { bottom: 0; right: 0; border-left: none;  border-top: none; border-bottom-right-radius: 8px; }
+
+  /* Hình vuông bo góc — nửa trên trắng, nửa dưới nhạt dần */
+  .square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .square .top {
+    flex: 1;
+    background: #ffffff;
+  }
+  .square .bottom {
+    flex: 1;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.1));
+  }
+
+  /* Thanh ngang TRẮNG, nằm đè giữa hình vuông, DÀI HƠN hình vuông */
+  .bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;   /* dài hơn hình vuông (48px) */
+    height: 4px;
+    background: #ffffff;
+    border-radius: 2px;
+    z-index: 2;    /* đè lên trên hình vuông */
+  }
+</style>
+</head>
+<body>
+  <div class="icon">
+    <div class="scan-frame">
+      <span class="tl"></span>
+      <span class="tr"></span>
+      <span class="bl"></span>
+      <span class="br"></span>
+      <div class="square">
+        <div class="top"></div>
+        <div class="bottom"></div>
+      </div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</body>
+</html>
