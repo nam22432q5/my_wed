@@ -279,10 +279,10 @@
     color: var(--black87);
   }
 
-  /* bold red label inline */
+  /* bold dark green label inline — đúng màu app thật */
   .info-row .lbl {
     font-weight: 700;
-    color: var(--red);
+    color: #1a5c38;
     font-size: clamp(13px, 3.8vw, 15px);
   }
   /* value continues on same line, normal weight */
@@ -305,7 +305,7 @@
   }
   .info-row-inline2 .col1 { flex: 1; }
   .info-row-inline2 .col2 { flex: 1; }
-  .info-row-inline2 .lbl { font-weight: 700; color: var(--red); }
+  .info-row-inline2 .lbl { font-weight: 700; color: #1a5c38; }
   .info-row-inline2 .val { font-weight: 400; color: var(--black87); }
 
   /* Last updated bar */
@@ -803,24 +803,24 @@
 
       <!-- Nơi đăng ký khai sinh -->
       <div class="info-row">
-        <span class="lbl">Nơi đăng ký khai sinh: </span><span class="val" id="d-hometown">Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+        <span class="lbl">Nơi đăng ký khai sinh: </span><span class="val" id="d-hometown"></span>
       </div>
 
       <!-- Quê quán -->
       <div class="info-row">
-        <span class="lbl">Quê quán: </span><span class="val" id="d-hometown2">Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+        <span class="lbl">Quê quán: </span><span class="val" id="d-hometown2"></span>
       </div>
 
       <!-- Dân tộc + Tôn giáo inline 2 col -->
       <div class="info-row-inline2">
-        <div class="col1"><span class="lbl">Dân tộc: </span><span class="val">Kinh</span></div>
-        <div class="col2"><span class="lbl">Tôn giáo: </span><span class="val">Không</span></div>
+        <div class="col1"><span class="lbl">Dân tộc: </span><span class="val">---</span></div>
+        <div class="col2"><span class="lbl">Tôn giáo: </span><span class="val">---</span></div>
       </div>
 
       <!-- Nơi thường trú -->
       <div class="info-row">
         <span class="lbl">Nơi thường trú:</span><br/>
-        <span class="val" id="d-address">Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+        <span class="val" id="d-address"></span>
       </div>
 
       <!-- Nơi tạm trú -->
@@ -832,17 +832,17 @@
       <!-- Nơi ở hiện tại -->
       <div class="info-row">
         <span class="lbl">Nơi ở hiện tại:</span><br/>
-        <span class="val" id="d-address2">Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên</span>
+        <span class="val" id="d-address2"></span>
       </div>
 
       <!-- Đặc điểm nhận dạng -->
       <div class="info-row">
-        <span class="lbl">Đặc điểm nhận dạng: </span><span class="val" id="d-feature">Sẹo chấm C:2cm trên sau mép phải</span>
+        <span class="lbl">Đặc điểm nhận dạng: </span><span class="val" id="d-feature"></span>
       </div>
 
       <!-- Ngày cấp Căn cước -->
       <div class="info-row">
-        <span class="lbl">Ngày cấp Căn cước gần nhất: </span><span class="val">05/11/2024</span>
+        <span class="lbl">Ngày cấp Căn cước gần nhất: </span><span class="val">---</span>
       </div>
 
       <!-- Nhóm máu -->
@@ -857,13 +857,13 @@
 
       <!-- Nghề nghiệp -->
       <div class="info-row">
-        <span class="lbl">Nghề nghiệp: </span><span class="val">Khác</span>
+        <span class="lbl">Nghề nghiệp: </span><span class="val">---</span>
       </div>
 
       <!-- Số thuê bao -->
       <div class="info-row">
         <span class="lbl">Số thuê bao di động:</span><br/>
-        <span class="val">. Đăng ký tài khoản định danh: <span id="d-phone">0396590363</span></span><br/>
+        <span class="val">. Đăng ký tài khoản định danh: <span id="d-phone"></span></span><br/>
         <span class="val">. Khác: ---</span>
       </div>
 
@@ -931,10 +931,10 @@
       <div class="gplx-points">Điểm còn lại của GPLX: <span class="pts">12</span></div>
       <div class="gplx-update">(Cập nhật lần cuối: 19:34 20-03-2026)</div>
       <div class="gplx-grid">
-        <div class="gplx-grid-item"><label>Số giấy phép</label><span id="g-number">480133020780</span></div>
-        <div class="gplx-grid-item"><label>Có giá trị đến</label><span id="g-expiry">29-12-2035</span></div>
-        <div class="gplx-grid-item"><label>Ngày cấp</label><span id="g-issued">29-12-2025</span></div>
-        <div class="gplx-grid-item"><label>Nơi cấp</label><span id="g-place">Cục Cảnh sát giao thông</span></div>
+        <div class="gplx-grid-item"><label>Số giấy phép</label><span id="g-number"></span></div>
+        <div class="gplx-grid-item"><label>Có giá trị đến</label><span id="g-expiry"></span></div>
+        <div class="gplx-grid-item"><label>Ngày cấp</label><span id="g-issued"></span></div>
+        <div class="gplx-grid-item"><label>Nơi cấp</label><span id="g-place"></span></div>
       </div>
       <button class="gplx-detail-btn">
         Xem chi tiết
@@ -997,49 +997,49 @@ function switchTab(tab){
 
 function refreshMain(){
   const d=loadPrefs();
-  setText('home-name',d.name||'NGUYỄN VŨ NAM');
+  setText('home-name',d.name||'');
   const avt=document.getElementById('home-avt');
   if(avt)avt.src=d.avatar||'assets/avt.jpg';
   const ln=document.getElementById('login-name');
-  if(ln)ln.textContent=d.name||'NGUYỄN VŨ NAM';
+  if(ln)ln.textContent=d.name||'';
   const lnum=document.getElementById('login-num');
-  if(lnum)lnum.textContent=maskNumber(d.number)||'01****98';
+  if(lnum)lnum.textContent=maskNumber(d.number)||'';
 }
 function refreshWallet(){
   const d=loadPrefs();
   const a=document.getElementById('wallet-avt');
   if(a)a.src=d.avatar||'assets/avatar.jpg';
   const n=document.getElementById('wallet-num');
-  if(n)n.textContent=maskNumber(d.number)||'0****987';
+  if(n)n.textContent=maskNumber(d.number)||'';
 }
 function refreshCccdDetail(){
   const d=loadPrefs();
   const a=document.getElementById('cccd-card-avt');
   if(a)a.src=d.avatar||'assets/avatar.jpg';
-  setText('cccd-number',d.number||'019205000598');
-  setText('cccd-name-card',d.name||'NGUYỄN VŨ NAM');
-  setText('cccd-dob-card',d.dob||'28/06/2005');
-  setText('cccd-gender-card',d.gender||'Nam');
-  setText('d-hometown',d.hometown||'Xã Vô Tranh, Tỉnh Thái Nguyên');
-  setText('d-hometown2',d.hometown||'Xã Vô Tranh, Tỉnh Thái Nguyên');
-  setText('d-address',d.address||'Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên');
-  setText('d-address2',d.address||'Xóm Liên Hồng 3, Xã Vô Tranh, Tỉnh Thái Nguyên');
-  setText('d-feature',d.feature||'Sẹo chấm C:2cm trên sau mép phải');
-  setText('d-phone',d.phone||'0396590363');
+  setText('cccd-number',d.number||'');
+  setText('cccd-name-card',d.name||'');
+  setText('cccd-dob-card',d.dob||'');
+  setText('cccd-gender-card',d.gender||'');
+  setText('d-hometown',d.hometown||'');
+  setText('d-hometown2',d.hometown||'');
+  setText('d-address',d.address||'');
+  setText('d-address2',d.address||'');
+  setText('d-feature',d.feature||'');
+  setText('d-phone',d.phone||'');
 }
 function refreshGplx(){
   const d=loadPrefs();
-  setText('g-number',d.gplxNumber||'480133020780');
-  setText('g-expiry',d.gplxExpiry||'29-12-2035');
-  setText('g-issued',d.gplxIssued||'29-12-2025');
-  setText('g-place',d.gplxPlace||'Cục Cảnh sát giao thông');
+  setText('g-number',d.gplxNumber||'');
+  setText('g-expiry',d.gplxExpiry||'');
+  setText('g-issued',d.gplxIssued||'');
+  setText('g-place',d.gplxPlace||'');
 }
 function setText(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
 
 function doLogin(){
   const d=loadPrefs();
-  document.getElementById('login-name').textContent=d.name||'NGUYỄN VŨ NAM';
-  document.getElementById('login-num').textContent=maskNumber(d.number)||'01****98';
+  document.getElementById('login-name').textContent=d.name||'';
+  document.getElementById('login-num').textContent=maskNumber(d.number)||'';
   goto('main');
 }
 function togglePw(){
