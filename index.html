@@ -378,13 +378,20 @@
   }
   .tile-row span { font-size: clamp(13px, 3.8vw, 14.5px); font-weight: 600; color: var(--black87); flex: 1; line-height: 1.4; }
 
-  .list-tile2 {
-    background: #fff; /* 👈 QUAN TRỌNG */
-    margin: 0 12px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 0; /* 👈 bỏ padding */
+  .list-tile2.group-card {
+    position: fixed;
+
+    left: 0;   /* 👈 full ngang */
+    right: 0;  /* 👈 full ngang */
+    bottom: 0; /* 👈 sát đáy */
+
+    margin: 0; /* 👈 bỏ margin cũ */
+
+    border-radius: 16px 16px 0 0; /* 👈 chỉ bo trên giống app */
+    background: #fff;
+
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    z-index: 999;
   }
   .list-tile2 .tile-row {
     display: flex;
