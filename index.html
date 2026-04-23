@@ -242,12 +242,45 @@
   .numpad-key.delete { background: var(--black87); color: #fff; }
   .numpad-key.empty { background: none; box-shadow: none; cursor: default; }
 
-  /* ====== CCCD DETAIL - FIXED EXACTLY LIKE SCREENSHOT ====== */
-  /* Background: watermark image, white appbar */
+  /* ====== CCCD DETAIL ====== */
   #cccd-detail {
     background: #fff;
+    position: relative;
   }
-  .detail-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  /* Ảnh nền trên - nửa trên trang */
+  #cccd-detail::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: url('assets/cccd_bg_watermark.webp') no-repeat;
+    background-position: 40px -50px;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+    background-size: 120%; /* 👈 PHÓNG TO */
+  }
+  /* Ảnh nền dưới - nửa dưới trang */
+  #cccd-detail::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0; bottom: 0;
+    background: url('assets/cccd_bg_watermark1.jpg') no-repeat;
+    background-position: 10px 0;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+    background-size: 150%; /* 👈 PHÓNG TO */
+
+  }
+  .detail-scroll {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 140px;
+    position: relative;
+    z-index: 1;
+  }
 
   .detail-appbar {
     background: #fff;
@@ -255,6 +288,7 @@
     padding-left: 16px; padding-right: 16px; padding-bottom: 14px;
     display: flex; align-items: center; gap: 12px;
     border-bottom: 1px solid var(--black12); flex-shrink: 0;
+    position: relative; z-index: 2;
   }
   .back-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; color: var(--black87); }
   .detail-appbar h2 { font-size: clamp(16px, 4.5vw, 18px); font-weight: 700; }
@@ -264,10 +298,10 @@
   .cccd-card-inner { position: relative; width: 100%; padding-bottom: 62.5%; }
   .cccd-card-inner img.cccd-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
 
-  /* The info area has a watermark bg - user adds later */
+  /* The info area - transparent to show full page bg */
   .cccd-info-body {
     position: relative;
-    background: #fff url('assets/cccd_bg_watermark.jpg') center/cover no-repeat;
+    background: transparent;
     padding: 14px 16px 0;
   }
 
@@ -328,10 +362,18 @@
   }
   .tile-row span { font-size: clamp(13px, 3.8vw, 14.5px); font-weight: 600; color: var(--black87); flex: 1; line-height: 1.4; }
 
-  .list-tile2 { background: #fff; }
-  .list-tile2 .tile-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--black12); }
-  .list-tile2 .tile-row span { font-size: clamp(13px, 3.8vw, 14.5px); font-weight: 600; flex: 1; }
-  .tile-dot { width: 28px; height: 28px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .list-tile2 { background: transparent; padding: 0 12px; }
+  .list-tile2 .tile-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .list-tile2 .tile-row span { font-size: clamp(13px, 3.8vw, 14.5px); font-weight: 600; flex: 1; color: var(--black87); }
+  .tile-dot { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .tile-divider { height: 1px; background: var(--black12); margin: 0 16px; }
 
   /* ====== GPLX ====== */
@@ -881,25 +923,32 @@
       <span>04:23 12-11-2024</span>
     </div>
 
-    <!-- Link tile: family info -->
-    <div class="list-tile">
+    <!-- Link tile: family info — có khoảng cách nhỏ bên dưới -->
+    <div class="list-tile" style="margin-bottom: 8px;">
       <div class="tile-row">
         <span>Thông tin gia đình, người đại diện hợp pháp, người được đại diện</span>
         <svg width="20" height="20" fill="none" stroke="#999" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
     </div>
 
-    <!-- Link tiles: card history -->
+    <!-- Link tiles: card history — icon mũi tên đỏ đúng như app thật -->
     <div class="list-tile2">
       <div class="tile-row">
+        <!-- Hình tròn đỏ có mũi tên trắng bên trong -->
         <div class="tile-dot">
-          <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="12" fill="var(--red)"/>
+            <path d="M9 12h6M13 9l3 3-3 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
         <span>Thẻ Căn cước</span>
       </div>
       <div class="tile-row">
         <div class="tile-dot">
-          <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="12" fill="var(--red)"/>
+            <path d="M9 12h6M13 9l3 3-3 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
         <span>Lịch sử cấp thẻ CC/CCCD/CMND</span>
       </div>
